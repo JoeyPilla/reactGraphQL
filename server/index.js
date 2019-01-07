@@ -2,8 +2,12 @@ const express = require('express');
 const graphqlHTTP = require('express-graphql')
 const schema = require('./schema/schema');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 const app = express();
+
+//allow cors
+app.use(cors());
 
 var mongoDB = 'mongodb://localhost:27017/library';
 mongoose.connect(mongoDB);
@@ -17,6 +21,6 @@ app.use('/graphql', graphqlHTTP({
 
 
 
-app.listen(3006, () => {
+app.listen(4000, () => {
     console.log('app is listening');
 })
